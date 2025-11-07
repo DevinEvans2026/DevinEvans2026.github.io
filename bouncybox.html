@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Bouncy Box</title>
+    <style>
+      #theimg {
+        position: absolute;
+        top: 250px;
+        left: 650px;
+        width: 50px;
+        height: 50px;
+      }
+      #bouncybox {
+        position: absolute;
+        top: 250px;
+        left: 450px;
+        width: 50px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img  id ="theimg"  src="https://static.wixstatic.com/media/593313_f34e1ecd41da4211abf8925caa61aba3~mv2.png"/>
+    </div>
+    <div>
+      <img id = "bouncybox" src="https://moonwalkusa.com/cdn/shop/files/B-051_3.jpg?v=1684812445" />
+    </div>
+  </body>
+</html>
+
+<script>
+
+  var x1 = 650;
+  var y1 = 250;
+  var speedX1 = 2;
+  var speedY1 = 2;
+  var box1 = document.getElementById('theimg');
+  var box1Width = box1.width;
+  var box1Height = box1.height;
+
+
+
+
+
+  var x2 = 450;
+  var y2 = 250;
+  var speedX2 = 2;
+  var speedY2 = 2;
+  var box2 = document.getElementById('bouncybox');
+  var box2Width = box2.width;
+  var box2Height = box2.height;
+
+
+  
+  function moveBox1() {
+    x1 = x1 + speedX1;
+    y1 = y1 + speedY1;
+
+    // Inverts speed if box comes in contact with a horizontal edge
+    if (x1 > window.innerWidth || x1 < 0) {
+      speedX1 *= -1;
+    }
+    // Invert speed if box comes into contact with  a vertical edge.
+    if (y1> window.innerHeight || y1 < 0) {
+      speedY1 *= -1;
+    }
+
+    box1.style.left = x1 + 'px';
+    box1.style.top = y1 + 'px';
+  }
+ 
+
+  function moveBox2(){
+    x2 = x2 + speedX2;
+    y2 = y2 + speedY2;
+
+    if (x2 > window.innerWidth || x2 < 0) {
+      speedX2 *= -1;
+    }
+
+    if (y2 > window.innerHeight || y2 < 0) {
+      speedY2 *= -1;
+    }
+
+
+
+    box2.style.left = x2 + 'px';
+    box2.style.top = y2 + 'px';
+  }
+  
+  
+  setInterval(moveBox1, 1);
+  setInterval(moveBox2, 10);
+
+</script>

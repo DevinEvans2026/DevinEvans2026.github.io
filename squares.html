@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>square</title>
+  </head>
+  <body>
+    <canvas id="canvas" height="950" width="2000"> </canvas>
+  </body>
+</html>
+
+<script>
+  
+
+  var x = [];
+  var y = [];
+  var speedX = [];
+  var speedY = [];
+  for (var p = 0; p <= 1800; p = p + 10){
+    x.push(p);
+  }
+  for (var u = 0; u <= 950; u = u + 5){
+    y.push(u)
+  }
+  for (var n = 0.1; n >= -10; n = n + -0.1){
+    speedX.push(n)
+  }
+  for (var l = 0.1; l <= 10; l = l + .1) {
+    speedY.push(l);
+  }
+
+
+
+
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+  var canvasWidth = canvas.width;
+  var canvasHeight = canvas.height;
+
+  function moveCanvas() {
+    ctx.clearRect(0,0,2000,2000);
+    for (var i = 0; i < 1000; i = i + 1){
+    ctx.fillRect(x[i], y[i], 100, 100);
+    x[i] = x[i] + speedX[i];
+    y[i] = y[i] + speedY[i];
+    
+    if (x[i] + 100 > canvasWidth || x[i] < 0) {
+      speedX[i] = speedX[i] * -1;
+    }
+
+    if (y[i] + 100 > canvasHeight || y[i] < 0) {
+      speedY[i] = speedY[i] * -1;
+    }
+  }
+}
+
+  setInterval(moveCanvas, 10);
+</script>
